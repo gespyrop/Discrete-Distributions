@@ -94,7 +94,7 @@ elif choice == 4:
 
 	print()
 
-	for m in range(min(n, k)):
+	for m in range(min(n + 1, k + 1)):
 		p = binomial(k, m) * binomial(N - k, n - m) / binomial(N ,n)
 		print("%d: %f" % (m, p))
 		plt.bar(m, p, color='m')
