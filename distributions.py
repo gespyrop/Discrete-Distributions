@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from math import factorial, sqrt
+from math import factorial, sqrt, e
 
 def binomial(n, k):
     return factorial(n)/(factorial(n - k) * factorial(k))
@@ -7,17 +7,17 @@ def binomial(n, k):
 def bd(n, k, p):
     return binomial(n, k) * p**k * (1 - p)**(n - k)
 
-choice = int(input("1) Binomial Distribution\n2) Geometric Distribution\n\nChoice: "))
-while choice not in range(1,3):
+choice = int(input("1) Binomial Distribution\n2) Poisson Distribution\n3) Geometric Distribution\n\nChoice: "))
+while choice not in range(1,4):
 	choice = int(input("Error: Invalid choice!\n\nChoice: "))
 
-probability = float(input("\nInsert probability of success: ")) #probability of success
-	
-if probability > 1 or probability < 0:
-    print("\nError: Invalid Probability Value")
-    exit(1)
-
 if choice == 1:
+
+	probability = float(input("\nInsert probability of success: ")) #probability of success
+	if probability > 1 or probability < 0:
+	    print("\nError: Invalid Probability Value")
+	    exit(1)
+
 	n = int(input("Insert number of trials: ")) #trials
 
 	plt.suptitle("Binomial Distribution")
@@ -34,8 +34,31 @@ if choice == 1:
 	    print("%d: %f" % (i, bd(n, i, probability)))
 	    #E += i * bd(n, i, probability)
 	    plt.bar(i, bd(n, i, probability), color='c')
-
 elif choice == 2:
+
+	l = int(input("\nInsert Average Rate of Success: "))
+
+	plt.suptitle("Poisson Distribution")
+	plt.title("Average Rate of Success: = %f" % (l))
+	plt.xlabel("Occurrences of an Event")
+
+	E, var = l ,l
+
+	k = 0
+	p = e ** -l
+
+	while(p > 0.0000009):
+		print("%d: %f" % (k, p))
+		plt.bar(k, p, color='g')
+		k += 1
+		p = (e ** -l) * (l ** k) / factorial(k)
+
+elif choice == 3:
+
+	probability = float(input("\nInsert probability of success: ")) #probability of success		
+	if probability > 1 or probability < 0:
+	    print("\nError: Invalid Probability Value")
+	    exit(1)
 
 	plt.suptitle("Geometric Distribution")
 	plt.title("Success Probability = %f" % (probability))
