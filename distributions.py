@@ -20,6 +20,7 @@ if choice == 1:
 
 	n = int(input("Insert number of trials: ")) #trials
 
+	plt.figure("Binomial Distribution")
 	plt.suptitle("Binomial Distribution")
 	plt.title("n = %d    Success Probability = %f" % (n, probability))
 	plt.xlabel("Successful Trials")
@@ -39,6 +40,7 @@ elif choice == 2:
 
 	l = int(input("\nInsert Average Rate of Success: "))
 
+	plt.figure("Poisson Distribution")
 	plt.suptitle("Poisson Distribution")
 	plt.title("Average Rate of Success: = %f" % (l))
 	plt.xlabel("Occurrences of an Event")
@@ -61,6 +63,7 @@ elif choice == 3:
 	    print("\nError: Invalid Probability Value")
 	    exit(1)
 
+	plt.figure("Geometric Distribution")
 	plt.suptitle("Geometric Distribution")
 	plt.title("Success Probability = %f" % (probability))
 	plt.xlabel("Trials Until Success")
@@ -85,6 +88,7 @@ elif choice == 4:
 	n = int(input("Insert Sample Size: "))
 	k = int(input("Insert Number of Successes in Population: "))
 
+	plt.figure("Hypergeometric Distribution")
 	plt.suptitle("Hypergeometric Distribution")
 	plt.title("Population Size = %d    Sample Size = %d    Number of Successes in Population = %d" % (N, n, k))
 	plt.xlabel("Number of Successes in Sample")
